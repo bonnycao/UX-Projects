@@ -46,7 +46,7 @@ if(teams.length===1){
  const completion=Math.round(group.reduce((n,s)=>n+s.progress,0)/group.length);
  const latest=group.some(s=>s.lastActivity.includes('h ago'))?'Today':'See student activity';
  const info=teamInfo[teams[0]];
- html+='<section class="overview" aria-label="Team overview"><h3>Team Overview</h3><div class="overview-card"><div class="overview-team">'+esc(teams[0])+'</div><div class="metrics">';
+ html+='<section class="overview" aria-label="Team overview for '+esc(teams[0])+'"><h3>Team Overview — '+esc(teams[0])+'</h3><div class="overview-card"><div class="metrics">';
  [['Current Course',info.course],['Current Lesson',info.lesson],['Team Avg. Grade',avg],['Course Completion',completion+'%'],['Latest Activity',latest]].forEach(([label,value])=>{html+='<div class="metric"><div class="metric-label">'+esc(label)+'</div><div class="metric-value">'+esc(value)+'</div></div>';});
  html+='</div></div></section>';
 }
