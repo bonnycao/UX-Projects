@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Typography Accessibility Comparison</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --text-color:#313131;
+  --bg:#f5f5f5;
+  --card:#ffffff;
+  --border:#dddddd;
+  --muted:#666;
+  --heading:#111;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  font-size:16px;
+}
+
+body{
+  margin:0;
+  padding:20px 24px 80px;
+  background:var(--bg);
+  font-family:Inter, sans-serif;
+  color:var(--text-color);
+}
+
+h1 {
+  font-size: 26px;
+}
+
+h2{
+  font-size: 20px;
+}
+.wrapper{
+  max-width:1200px;
+  margin:auto;
+}
+
+.toolbar{
+  position:sticky;
+  top:0;
+  z-index:10;
+
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+
+  padding:20px;
+  margin-bottom:28px;
+
+  background:rgba(255,255,255,0.94);
+  backdrop-filter:blur(10px);
+
+  border:1px solid var(--border);
+  border-radius:14px;
+}
+
+
+button{
+  border:1px solid #111;
+  background:#ffffff;
+  color:#111;
+
+  padding:12px 18px;
+  border-radius:10px;
+
+  font-size:14px;
+  font-weight:600;
+
+  cursor:pointer;
+  transition:all .2s ease;
+  cursor:pointer;
+}
+
+button.active{
+  background:#111;
+  color:#fff;
+}
+
+button:hover{
+  background:#111;
+  color:#fff;
+  transform:translateY(-1px);
+}
+
+
+.metrics{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  font-size:14px;
+  color:#555;
+}
+
+.reader{
+  margin:auto;
+  background:var(--card);
+  padding:40px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  transition:all .25s ease;
+}
+
+.reader h1{
+  margin-top:0;
+  margin-bottom:12px;
+  color:var(--heading);
+  font-size:2rem;
+}
+
+.reader h2{
+  margin-top:0;
+  margin-bottom:20px;
+  color:var(--heading);
+  font-size:1.5rem;
+}
+
+.reader p{
+  color:#313131;
+  margin:0 0 1.4em;
+  font-style:normal;
+  letter-spacing:0;
+  transition:all .25s ease;
+}
+
+.hero{
+  display:flex;
+  gap:28px;
+  align-items:flex-start;
+  margin-bottom:18px;
+}
+
+.image-placeholder{
+  width:270px;
+  height:210px;
+  background:#e5e5e5;
+  border-radius:8px;
+  flex-shrink:0;
+}
+
+.theme-a{
+  max-width:760px;
+}
+.theme-a p{
+  font-size:16px;
+  line-height:26px;
+}
+
+.theme-b{
+  max-width:840px;
+}
+.theme-b p{
+  font-size:18px;
+  line-height:32px;
+}
+
+.theme-c{
+  max-width:900px;
+}
+.theme-c p{
+  font-size:20px;
+  line-height:30px;
+}
+
+.theme-d{
+  max-width:900px;
+}
+.theme-d p{
+  font-size:20px;
+  line-height:36px;
+}
+
+
+
+.section{
+  margin-top:0px;
+}
+
+.section-title{
+  margin-bottom:16px;
+  font-size:1.6rem;
+  color:#111;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:18px;
+  background:white;
+}
+
+th,
+td{
+  border:1px solid #e2e2e2;
+  padding:14px;
+  text-align:left;
+  vertical-align:top;
+}
+
+th{
+  background:#fafafa;
+  font-weight:700;
+}
+
+td{
+  line-height:1.5;
+}
+
+.badge{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:999px;
+  background:#f0f0f0;
+  font-size:13px;
+  font-weight:600;
+}
+
+.highlight{
+  background:#ffff;
+  border-left:4px solid #00929c;
+  padding:18px;
+  margin-top:10px;
+  margin-bottom: 30px;
+  border-radius:8px;
+  font-size: 16px;
+  line-height: 26px;
+
+
+}
+
+ul{
+  line-height:1.8;
+}
+
+.notes{
+  margin-top:28px;
+  padding-top:20px;
+  border-top:1px solid #ececec;
+  color:#666;
+  font-size:14px;
+}
+
+@media (max-width: 768px){
+
+  body{
+    padding:20px 14px 60px;
+  }
+
+  .hero{
+    flex-direction:column;
+  }
+
+  .image-placeholder{
+    width:100%;
+    height:180px;
+  }
+
+  .reader{
+    padding:24px;
+  }
+
+  .theme-a p,
+  .theme-b p,
+  .theme-c p,
+  .theme-d p{
+    font-size:18px;
+  }
+
+  table{
+    display:block;
+    overflow-x:auto;
+  }
+
+}
+
+
+table{
+  width:100%;
+  margin-top:18px;
+
+  background:#fff;
+
+  border:1px solid #e2e2e2;
+  border-radius:8px;
+
+  border-collapse:separate;
+  border-spacing:0;
+
+  overflow:hidden;
+}
+
+th,
+td{
+  padding:14px;
+  text-align:left;
+  vertical-align:top;
+
+  border-bottom:1px solid #ececec;
+}
+
+th{
+  background:#fafafa;
+  font-weight:700;
+}
+
+tr:last-child td{
+  border-bottom:none;
+}
+
+/* Optional:
+   Add vertical divider lines */
+
+td:not(:last-child),
+th:not(:last-child){
+  border-right:1px solid #ececec;
+}
+
+
+
+.option-tooltip{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+
+
+.info-icon{
+  width:18px;
+  height:18px;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  margin-left:6px;
+
+  border-radius:999px;
+
+  background:rgba(255,255,255,.18);
+  border:1px solid rgba(0,0,0,.15);
+
+  color:inherit;
+
+  font-size:11px;
+  font-weight:700;
+
+  transition:all .2s ease;
+  cursor:pointer;
+}
+
+
+.info-icon:hover{
+  background:#111;
+  color:#fff;
+}
+
+.popover{
+  position:absolute;
+
+  top:120%;
+  left:0;
+
+  width:300px;
+
+  padding:14px;
+
+  background:#fff;
+
+  border:1px solid #e2e2e2;
+  border-radius:10px;
+
+  box-shadow:0 8px 24px rgba(0,0,0,.08);
+
+  opacity:0;
+  visibility:hidden;
+
+  transform:translateY(6px);
+
+  transition:all .2s ease;
+  cursor:pointer;
+
+  z-index:100;
+}
+
+
+.popover.show{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+
+.popover-title{
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+.popover-text{
+  font-size:13px;
+  line-height:1.6;
+  color:#555;
+}
+
+.popover a{
+  color:#0B63CE;
+  text-decoration:none;
+}
+
+.popover a:hover{
+  text-decoration:underline;
+}
+
+.message-block{
+  margin-top:32px;
+
+  padding:24px;
+
+  background:#EEF6FF;
+
+  border:1px solid #CFE4FF;
+
+  border-radius:12px;
+}
+
+.message-block h2{
+  margin-top:0;
+  margin-bottom:12px;
+
+  font-size:22px;
+
+  color:#0F172A;
+}
+
+.message-block p{
+  margin:0;
+
+  font-size:14px;
+  line-height:1.8;
+
+  color:#313131;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+  <h1>KeelLearn Research: Typography Accessibility Comparison</h1>
+<div class="toolbar">
+
+  <button class="active" data-theme="theme-a">Option 1: 16 / 26 ✅ </button>
+  <button data-theme="theme-b">Option 2: 18 / 32</button>
+  <button data-theme="theme-c">Option 3: 20 / 30</button>
+
+<div class="option-tooltip">
+
+  <button data-theme="theme-d">
+
+    Option 4: 20 / 36 (NNG)
+
+    <span
+      class="info-icon"
+      tabindex="0"
+      aria-label="More information about NNG typography"
+    >
+      i
+    </span>
+
+  </button>
+
+  <div class="popover">
+
+    <div class="popover-title">
+      Nielsen Norman Group (NNG)
+    </div>
+
+    <div class="popover-text">
+      This option was included by designer Chia-Ling as a reference to the
+  editorial-style readability and spacing commonly seen in Nielsen Norman Group
+  (NNG) article layouts.
+
+      <br><br>
+
+      <a
+        href="https://www.nngroup.com/articles/golden-ratio-ui-design/" target="_blank">
+        View Artical on Nielsen Norman Group →
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+  <div class="metrics">
+    <div id="cpl">CPL: --</div>
+    <div id="fontInfo">--</div>
+  </div>
+</div>
+
+<main id="reader" class="reader theme-a">
+  <article>
+    <div class="section">
+      <h2>Reading Sample</h2>
+      <div class="hero">
+        <div class="image-placeholder"></div>
+        <div>
+          <p>
+            Wouldn't it be great if we could enter a key phrase and pull up information we stored in our brain?
+            Sadly, that isn't how this brain of ours works. When it comes to retention, there are two important
+            parts of our brain: working memory, that part where we think, see, feel, and hear information.
+            The second part is where we store that information, our database, if you will.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        When you forget a name given only moments before, it isn't really lost; you just can't find it.
+        We depend on a neural link between our working memory and our storage, and it is very weak at the start.
+        We must build it into a chain if we want to pull up that name whenever we need it.
+      </p>
+
+      <p>
+        The capacity of the brain is so massive that its capacity is estimated to be the equivalent
+        of 500 years of movies. That is a lot of data, so it should not surprise us that information
+        can get lost in there. The initial neural link is so flimsy that the name of that new person,
+        we were introduced to just 30 seconds ago, could already be lost.
+      </p>
+
+    </div>
+<!--
+<div class="notes">
+
+      <div>• Tested considerations: browser zoom 100%, 125%, 150%, 200%</div>
+      <div>• Compared scanning rhythm, focus retention, eye fatigue, and paragraph tracking</div>
+      <div>• Optimized for desktop + mobile readability accessibility</div>
+    </div>-->
+
+  </article>
+
+</main>
+
+<div class="highlight" style="border-left: 4px solid #825E8B;">
+  <strong><span style="font-size: 20px;">Research Goals</strong><span>
+    <p>This typography accessibility research evaluates the optimal paragraph reading experience for KeelLearn lessons across desktop and mobile devices.</p>
+  <strong><span style="font-size: 20px;">Research Scope</strong><span>
+      <ul>
+        <li>Compare font-size, line-height, and CPL (characters per line)</li>
+        <li>Test browser zoom levels at 100%, 125%, 150%, and 200%</li>
+        <li>Evaluate scanning rhythm and paragraph tracking</li>
+        <li>Measure focus retention and eye fatigue during long-form reading</li>
+        <li>Compare desktop and mobile readability accessibility</li>
+        <li>Identify the most balanced typography system for lesson content</li
+      </ul>
+
+      <p style="font-size:14px;">
+        <a style="text-decoration:none;" href="https://docs.google.com/forms/d/e/1FAIpQLScuSDfQW27ydn9u8C_50L_Xkf6tfY0k56DEoMcx7H8uh-mwHA/viewform" target="_blank">View Research Survey 4 Figma Prototype Options for Font & LineHeight → </a> </p>
+</div>
+
+<div class="section">
+
+  <h2 class="section-title">Zoom & Readability Comparison Matrix</h2>
+
+  <table width="100%">
+    <thead>
+      <tr>
+        <th width="20%">Option</th>
+        <th width="20%">100%</th>
+        <th width="20%">125%</th>
+        <th width="20%">150%</th>
+        <th width="20%">200%</th>
+      </tr>
+    </thead>
+    <tbody style="font-size: 12px">
+
+      <tr>
+        <td>
+          <strong>1. 16px / 26px ✅</strong><br>
+          <span class="badge">Compact</span>
+        </td>
+        <td>
+          <ul style="margin:-5px 0px 0px 0px; padding:0px">
+          <li style="margin-left:10px">Fast scanning.</li>
+          <li style="margin-left:10px">Balanced information density.</li>
+          <li style="margin-left:10px">Efficient paragraph tracking.</li>
+        </ul>
+        </td>
+        <td>
+          <ul style="margin:-5px 0px 0px 0px; padding:0px">
+          <li style="margin-left:10px">Improved readabilitywhile maintaining strong scanning efficiency..</li>
+         </ul>
+        </td>
+        <td>
+          <ul style="margin:-5px 0px 0px 0px; padding:0px">
+          <li style="margin-left:10px">Good accessibility scaling with manageable scrolling.</li>
+          <li style="margin-left:10px">Stable learning-content density.</li>
+        </ul>
+        </td>
+        <td>
+          <ul style="margin:-5px 0px 0px 0px; padding:0px">
+          <li style="margin-left:10px">Strong zoom scalability.</li>
+          <li style="margin-left:10px">Better information density and lesson continuity than larger typography systems.</li>
+         </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>2. 18px / 32px</strong><br>
+          <span class="badge">Balanced</span>
+        </td>
+        <td>
+          <ul style="margin:-5px 0px 0px 0px; padding:0px">
+          <li style="margin-left:10px">Comfortable readability.</li>
+          <li style="margin-left:10px">Strong paragraph tracking.</li>
+          <li style="margin-left:10px">Low fatigue.</li>
+         </ul>
+        </td>
+        <td>
+          <ul style="margin:-5px 0px 0px 0px; padding:0px">
+          <li style="margin-left:10px">Very comfortable reading rhythm.</li>
+          <li style="margin-left:10px">Improved spacing and focus retention.</li>
+         </ul>
+        </td>
+        <td>
+          <ul style="margin:-5px 0px 0px 0px; padding:0px">
+          <li style="margin-left:10px">Increased scrolling begins affecting learning density.</li>
+         </ul>
+          <br>
+
+        </td>
+        <td>
+          <ul style="margin:-5px 0px 0px 0px; padding:0px">
+          <li style="margin-left:10px">Readability remains strong, but large text size increases scrolling and reduces content density.</li>
+         </ul>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <strong>3. 20px / 30px</strong><br>
+          <span class="badge">Dense Large Text</span>
+        </td>
+        <td>
+          <ul style="margin:-5px 0px 0px 0px; padding:0px">
+          <li style="margin-left:10px">Large text with tighter rhythm. Slightly crowded vertically.</li>
+         </ul>
+        </td>
+        <td>
+          <ul style="margin:-5px 0px 0px 0px; padding:0px">
+          <li style="margin-left:10px">Good clarity but denser paragraph rhythm.</li>
+         </ul>
+        </td>
+        <td>
+          <ul style="margin:-5px 0px 0px 0px; padding:0px">
+          <li style="margin-left:10px">Reduced reading efficiency during longer sessions.</li>
+        </ul>
+
+        </td>
+        <td>
+          <ul style="margin:-5px 0px 0px 0px; padding:0px">
+          <li style="margin-left:10px">Large text blocks dominate viewport and reduce context visibility.</li>
+        </ul>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <strong>4. 20px / 36px</strong><br>
+          <span class="badge">NNG Style</span>
+        </td>
+        <td>
+          <ul style="margin:-5px 0px 0px 0px; padding:0px">
+          <li style="margin-left:10px">Very comfortable editorial-style reading. Spacious layout.</li>
+         </ul>
+          <br>
+
+        </td>
+        <td>
+          <ul style="margin:-5px 0px 0px 0px; padding:0px">
+          <li style="margin-left:10px">Excellent comfort but slower scanning rhythm.</li>
+         </ul>
+        </td>
+        <td>
+          <ul style="margin:-5px 0px 0px 0px; padding:0px">
+          <li style="margin-left:10px">Increased whitespace and scrolling reduce learning efficiency.</li>
+         </ul>
+        </td>
+        <td>
+          <ul style="margin:-5px 0px 0px 0px; padding:0px">
+          <li style="margin-left:10px">Extremely large reading scale reduces scanning efficiency and lesson continuity.</li>
+           </ul>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>
+
+<!-- Accessibility & UX findings -->
+
+<div class="section">
+
+  <h2 class="section-title">Accessibility & UX Findings</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>16 / 26 ✅</th>
+        <th>18 / 32</th>
+        <th>20 / 30</th>
+        <th>20 / 36</th>
+      </tr>
+    </thead>
+
+    <tbody style="font-size: 12px">
+      <tr>
+        <td>Eye Fatigue</td>
+        <td>Low-Moderate</td>
+        <td>Low</td>
+        <td>Medium</td>
+        <td>Very Low</td>
+      </tr>
+
+      <tr>
+        <td>Scanning Speed</td>
+        <td>Fast</td>
+        <td>Fast + Stable</td>
+        <td>Medium</td>
+        <td>Slow</td>
+      </tr>
+
+      <tr>
+        <td>Paragraph Tracking</td>
+        <td>Good</td>
+        <td>Excellent</td>
+        <td>Good</td>
+        <td>Good</td>
+      </tr>
+
+      <tr>
+        <td>Desktop Reading</td>
+        <td>Excellent</td>
+        <td>Excellent</td>
+        <td>Good</td>
+        <td>Good</td>
+      </tr>
+
+      <tr>
+        <td>Mobile Reading</td>
+        <td>Excellent</td>
+        <td>Good</td>
+        <td>Moderate</td>
+        <td>Scroll-heavy</td>
+      </tr>
+
+      <tr>
+        <td>Accessibility Zoom</td>
+        <td>Excellent</td>
+        <td>Excellent</td>
+        <td>Moderate</td>
+        <td>Scroll-heavy</td>
+      </tr>
+
+      <tr>
+        <td>Information Density</td>
+        <td>Excellent</td>
+        <td>Good</td>
+        <td>Moderate</td>
+        <td>Low</td>
+      </tr>
+
+      <tr>
+        <td>Learn-form Learning</td>
+        <td>Excellent</td>
+        <td>Good</td>
+        <td>Moderate</td>
+        <td>Less efficient</td>
+      </tr>
+
+
+    </tbody>
+
+  </table>
+
+</div>
+
+<div class="section">
+
+      <h2 class="section-title">✅Option 1 is the Best Overall Choice</h2>
+
+      <div class="highlight">
+
+        <p style="font-size: 14px">
+          Option 1 (16px / 26px / #313131) remains the recommended typography system for KeelLearn lesson content based on comparative readability testing, browser zoom scalability, accessibility behavior, scanning efficiency,
+          and long-form learning readability across desktop and mobile devices.
+        </p>
+
+        <ul style="font-size: 14px">
+          <li><strong>16px font-size</strong> maintains strong readability while scaling more effectively at higher browser zoom levels (150%–200%).</li>
+          <li><strong>26px line-height</strong> provides balanced paragraph spacing, efficient scanning rhythm, and stable reading density for learning-focused content.</li>
+          <li><strong>Better zoom scalability</strong> than larger editorial-style typography systems such as 18px / 32px and 20px / 36px.</li>
+          <li><strong>Maintains stronger information density</strong> and reduces excessive scrolling during zoomed reading conditions</li>
+          <li><strong>#313131 font color</strong> provides strong readability contrast without the harshness of pure black, reducing visual vibration and eye strain</li>
+          <li><strong>WCAG accessibility note:</strong> WCAG 2.1 text-spacing guidance recommends that content remains functional and readable when users increase line-height to at least 1.5× the font-size. Option 1 already satisfies this accessibility guidance while maintaining stable reading behavior across browser zoom levels. <br> <a style="text-decoration:none;" href="https://www.w3.org/WAI/WCAG21/Understanding/text-spacing.html" target="_blank">View WCAG 2.1 Text Spacing Guidance → </a></li>
+        </ul>
+
+        <div class="message-block">
+
+  <h2>💡 <strong>Conclusion</strong></h2>
+
+  <p>
+    Based on comparative accessibility and readability testing, the recommendation
+    is to keep the current 16px / 26px typography system for KeelLearn lesson content
+    without increasing the default paragraph font-size or line-height.
+  </p>
+
+</div>
+
+      </div>
+
+    </div>
+
+
+<!-- Rem vs PX -->
+    <div class="section">
+
+
+      <h2 class="section-title">REM vs PX Reference</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Pixels</th>
+            <th>REM</th>
+            <th>Usage</th>
+          </tr>
+        </thead>
+
+        <tbody style="font-size: 12px">
+
+          <tr>
+            <td>16px</td>
+            <td>1rem</td>
+            <td>Minimum accessible paragraph size</td>
+          </tr>
+
+          <tr>
+            <td>18px</td>
+            <td>1.125rem</td>
+            <td>Recommended paragraph size</td>
+          </tr>
+
+          <tr>
+            <td>19px</td>
+            <td>1.1875rem</td>
+            <td>Balanced large body text</td>
+          </tr>
+
+          <tr>
+            <td>20px</td>
+            <td>1.25rem</td>
+            <td>Comfort-first reading</td>
+          </tr>
+
+          <tr>
+            <td>26px</td>
+            <td>1.625rem</td>
+            <td>Compact line-height</td>
+          </tr>
+
+          <tr>
+            <td>30px</td>
+            <td>1.875rem</td>
+            <td>Dense large-text line-height</td>
+          </tr>
+
+          <tr>
+            <td>32px</td>
+            <td>2rem</td>
+            <td>Recommended line-height</td>
+          </tr>
+
+          <tr>
+            <td>34px</td>
+            <td>2.125rem</td>
+            <td>Comfortable spacing</td>
+          </tr>
+
+          <tr>
+            <td>36px</td>
+            <td>2.25rem</td>
+            <td>NNG-inspired long-form spacing</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+</div>
+
+<script>
+
+// Typography Buttons
+
+const buttons = document.querySelectorAll('button');
+const reader = document.getElementById('reader');
+
+const cplEl = document.getElementById('cpl');
+const fontInfoEl = document.getElementById('fontInfo');
+
+buttons.forEach(button => {
+
+  button.addEventListener('click', (e) => {
+
+    // Prevent popover icon from triggering theme switch
+    if (e.target.classList.contains('info-icon')) {
+      return;
+    }
+
+    buttons.forEach(btn => btn.classList.remove('active'));
+
+    button.classList.add('active');
+
+    reader.className = 'reader ' + button.dataset.theme;
+
+    updateMetrics();
+
+  });
+
+});
+
+
+// NNG Popover Click Toggle
+
+const infoIcon = document.querySelector('.info-icon');
+const popover = document.querySelector('.popover');
+
+infoIcon.addEventListener('click', (e) => {
+
+  // Prevent button click
+  e.stopPropagation();
+
+  popover.classList.toggle('show');
+
+});
+
+document.addEventListener('click', (e) => {
+
+  if (
+    !popover.contains(e.target) &&
+    !infoIcon.contains(e.target)
+  ) {
+    popover.classList.remove('show');
+  }
+
+});
+
+
+function updateMetrics(){
+
+  const p = document.querySelector('.reader p');
+
+  const style = window.getComputedStyle(p);
+
+  const width = p.offsetWidth;
+
+  const fontSize = parseFloat(style.fontSize);
+
+  const lineHeight = parseFloat(style.lineHeight);
+
+  const avgCharWidth = fontSize * 0.52;
+
+  const cpl = Math.round(width / avgCharWidth);
+
+  cplEl.innerHTML = `
+    CPL: <strong>${cpl}</strong>
+  `;
+
+  fontInfoEl.innerHTML = `
+    ${fontSize}px / ${Math.round(lineHeight)}px
+  `;
+
+}
+
+window.addEventListener('resize', updateMetrics);
+
+updateMetrics();
+
+</script>
+
+</body>
+</html>
